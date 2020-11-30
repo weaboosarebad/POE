@@ -986,9 +986,7 @@ namespace Task1
         }
 
     }
-namespace Task1
-{
-    public class Shop
+public class Shop 
     {
         //Question 2.5  
         private Weapon[] weapons = new Weapon[3];
@@ -1004,6 +1002,39 @@ namespace Task1
 
 
         }
+
+        
+       private Weapon RandomWeapon()
+        {
+            int weaponselecter(MeleeWeapon.Types _meleeWeapon, RangedWeapon.Types _rangedWeapon)
+            {
+                switch (_meleeWeapon)
+                {
+                    case MeleeWeapon.Types.Dagger:
+                        return 1;
+                        
+                    case MeleeWeapon.Types.Longsword:
+                        return 2;
+                        
+                   
+                }
+                switch (_rangedWeapon)
+                {
+                    case RangedWeapon.Types.Longbow:
+                        return 3;
+
+                    case RangedWeapon.Types.Rifle:
+                        return 4;
+
+
+                }
+
+
+            }
+        }
+
+
+    }
 
 
     }
