@@ -916,6 +916,49 @@ namespace Task1
                 pubCost = 5;
             }
         
+        
+        public class RangedWeapon : Weapon
+    {
+        //Question 2.3
+            public enum Types
+            {
+                Rifle,
+                Longbow
+            }
+            public Types Weapon_Type;
+
+
+            //Constructor
+            public RangedWeapon()
+            {
+
+            }
+        public override int Range { get => base.Range; set => base.Range = base.Range; }
+        public RangedWeapon(int xCoord, int yCoord, Types WeaponType)
+            {
+                y = yCoord;
+                x = xCoord;
+                Weapon_Type = WeaponType;
+                if (Weapon_Type == Types.Rifle)
+                {
+                    pubWeaponType = "Rifle";
+                    pubDurability = 3;
+                    Range = 3;
+                    pubDam = 5;
+                    pubCost = 7;
+                }
+                if (Weapon_Type == Types.Longbow)
+                {
+                    pubWeaponType = "Longbow";
+                    pubDurability = 4;
+                    Range = 2;
+                    pubDam = 4;
+                    pubCost = 6;
+                }
+
+            }
+        
+    }
         }
     }
 }
