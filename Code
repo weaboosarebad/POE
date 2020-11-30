@@ -877,6 +877,48 @@ namespace Task1
 
         }
     }
+namespace Task1
+{
+    //Question 2.2
+    public class MeleeWeapon : Weapon
+    {
+        public enum Types
+        {
+            Dagger,
+            Longsword
+        }
+        public Types Weapon_Type; 
+        
+
+        //Constructor
+        public MeleeWeapon()
+        {
+
+        }
+        public override int Range { get => base.Range; set => base.Range = 1; }
+        public MeleeWeapon(int xCoord, int yCoord, Types WeaponType)
+        {
+            y = yCoord;
+            x = xCoord;
+            Weapon_Type = WeaponType;
+            if (Weapon_Type == Types.Dagger)
+            {
+                pubWeaponType = "Dagger";
+                pubDurability = 10;
+                pubDam = 3;
+                pubCost = 3; 
+            }
+            if (Weapon_Type == Types.Dagger)
+            {
+                pubWeaponType = "Sword";
+                pubDurability = 6;
+                pubDam = 4;
+                pubCost = 5;
+            }
+        
+        }
+    }
+}
 }
 
 
