@@ -961,6 +961,31 @@ namespace Task1
     }
         }
     }
+}namespace Task1
+{
+    class Leader : Enemy
+    {
+        //question 2.4
+        
+
+        public Leader(int _xpos, int _ypos, int _enemyDmg, int _startHP, string _symbol)
+        {
+            xPos = _xpos;
+            yPos = _ypos;
+            charSymbol = "L";
+            dmg = 2;
+            maximumHealth = 20;
+
+
+
+     
+        } 
+        public int ReturnMove()
+        {
+            
+        }
+
+    }
 }
 }
 
