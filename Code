@@ -24,7 +24,7 @@ namespace Task1
                 {
                     if (mapInstance[x, y].Tile_Type == Tile.TileType.Gold)
                     {
-                        Label tileLabel = new Label();
+                        Label tileLabel = new Label() ;
 
                         this.Controls.Add(tileLabel);
 
