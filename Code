@@ -1,8 +1,8 @@
-namespace Task1
+
 {   
     //19338534 Kieran Harris
 
-    //https://github.com/weaboosarebad/Project-1- My Github 
+    //https://github.com/weaboosarebad/POE- My Github 
     public partial class Form1 : Form
     {
        
@@ -20,11 +20,11 @@ namespace Task1
             mapInstance = map.MapGenerator(); 
             for (int x = 0; x <= map.xMapSize-1; x++)
             {
-                for (int y = 0; y <= map.yMapSize-1; y++ )
+                for (int y = 0; y <= map.yMapSize-1; y++)
                 {
                     if (mapInstance[x, y].Tile_Type == Tile.TileType.Gold)
                     {
-                        Label tileLabel = new Label() ;
+                        Label tileLabel = new Label();
 
                         this.Controls.Add(tileLabel);
 
@@ -207,7 +207,7 @@ namespace Task1
     }
 
     //Question 2.2 
-  public abstract class Character : Tile 
+  public class Character : Tile 
     {
         // Enum For Movement
         public enum Movement { noMovement, Up, Down, Left, Right }
@@ -710,45 +710,45 @@ namespace Task1
                  maximumHealth = 5;
                     dmg = 5;
             }
-            public int ReturnMove()
+            public virtual int ReturnMove()
             {
                return 0; 
-            } 
+            }
 
             //Overriden Check Range Method
-           //public bool CheckRange( )
-           // {
-           //     Map map = new Map();
-               
-                
-           //     Map obj = new Map();
-           //      //Loop Changes the Value Of M so it cycles through all 8 points available for a character
-              
-           //     for (int m =-1; m<2; m++)
-           //     {
-           //         if (obj.enemyMap[yPos + m, xPos - m] = '.')
-           //         {
-           //             return false; 
-           //         }
-           //         if (obj.enemyMap[yPos + m, xPos + m] = '.')
-           //         {
-           //             return false;
-           //         }
-           //         if (obj.enemyMap[yPos - m, xPos - m] = '.')
-           //         {
-           //             return false;
-           //         }
-           //         if (obj.enemyMap[yPos - m, xPos + m] = '.')
-           //         {
-           //             return false;
-           //         }
-                       
-           //     }
+            public bool CheckRange()
+            {
+                Map map = new Map();
 
-           //     return true;
 
-           // }
-        
+                Map obj = new Map();
+                //Loop Changes the Value Of M so it cycles through all 8 points available for a character
+
+                for (int m = -1; m < 2; m++)
+                {
+                    if (obj.enemyMap[yPos + m, xPos - m].Tile_Type == TileType.Area)
+                    {
+                        return false;
+                    }
+                    if (obj.enemyMap[yPos + m, xPos + m].Tile_Type == TileType.Area)
+                    {
+                        return false;
+                    }
+                    if (obj.enemyMap[yPos - m, xPos - m].Tile_Type == TileType.Area)
+                    {
+                        return false;
+                    }
+                    if (obj.enemyMap[yPos - m, xPos + m].Tile_Type == TileType.Area)
+                    {
+                        return false;
+                    }
+
+                }
+
+                return true;
+
+            }
+
         }
         
     }
@@ -825,222 +825,7 @@ namespace Task1
     }
 
 
-namespace Task1
-{
-   //Question 2.1
-    public abstract class Weapon : Item 
-    {
-        private int Damage;
 
-        //Public Accessor 
-        public int pubDam
-        {
-            get { return Damage; }
-            set { Damage = value; }
-        }
-        public virtual int Range
-        {
-            get; set;  
-        }
-
-        private int Durability;
-
-        //Public Accessor 
-        public int pubDurability
-        {
-            get { return Durability; }
-            set { Durability = value; }
-        }
-        private int Cost;
-
-        //Public Accessor 
-        public int pubCost
-        {
-            get { return Cost; }
-            set { Cost = value; }
-        }
-        private int weaponType;
-
-        //Public Accessor 
-        public int pubWeaponType
-        {
-            get { return weaponType; }
-            set { weaponType = value; }
-        }
-        //Constructor 
-
-        public Weapon(int xCoordinate, int yCoordinate, TileType _TileType)
-        {
-            y = yCoordinate;
-            x = xCoordinate;
-            Tile_Type = _TileType;
-
-        }
-    }
-namespace Task1
-{
-    //Question 2.2
-    public class MeleeWeapon : Weapon
-    {
-        public enum Types
-        {
-            Dagger,
-            Longsword
-        }
-        public Types Weapon_Type; 
-        
-
-        //Constructor
-        public MeleeWeapon()
-        {
-
-        }
-        public override int Range { get => base.Range; set => base.Range = 1; }
-        public MeleeWeapon(int xCoord, int yCoord, Types WeaponType)
-        {
-            y = yCoord;
-            x = xCoord;
-            Weapon_Type = WeaponType;
-            if (Weapon_Type == Types.Dagger)
-            {
-                pubWeaponType = "Dagger";
-                pubDurability = 10;
-                pubDam = 3;
-                pubCost = 3; 
-            }
-            if (Weapon_Type == Types.Dagger)
-            {
-                pubWeaponType = "Sword";
-                pubDurability = 6;
-                pubDam = 4;
-                pubCost = 5;
-            }
-        
-        
-        public class RangedWeapon : Weapon
-    {
-        //Question 2.3
-            public enum Types
-            {
-                Rifle,
-                Longbow
-            }
-            public Types Weapon_Type;
-
-
-            //Constructor
-            public RangedWeapon()
-            {
-
-            }
-        public override int Range { get => base.Range; set => base.Range = base.Range; }
-        public RangedWeapon(int xCoord, int yCoord, Types WeaponType)
-            {
-                y = yCoord;
-                x = xCoord;
-                Weapon_Type = WeaponType;
-                if (Weapon_Type == Types.Rifle)
-                {
-                    pubWeaponType = "Rifle";
-                    pubDurability = 3;
-                    Range = 3;
-                    pubDam = 5;
-                    pubCost = 7;
-                }
-                if (Weapon_Type == Types.Longbow)
-                {
-                    pubWeaponType = "Longbow";
-                    pubDurability = 4;
-                    Range = 2;
-                    pubDam = 4;
-                    pubCost = 6;
-                }
-
-            }
-        
-    }
-        }
-    }
-}namespace Task1
-{
-    class Leader : Enemy
-    {
-        //question 2.4
-        
-
-        public Leader(int _xpos, int _ypos, int _enemyDmg, int _startHP, string _symbol)
-        {
-            xPos = _xpos;
-            yPos = _ypos;
-            charSymbol = "L";
-            dmg = 2;
-            maximumHealth = 20;
-
-
-
-     
-        } 
-        public int ReturnMove()
-        {
-            
-        }
-
-    }
-public class Shop 
-    {
-        //Question 2.5  
-        private Weapon[] weapons = new Weapon[3];
-        private int RndNumber()
-        {
-            int randomNumber;
-            Random rndNumber = new Random();
-            randomNumber = rndNumber.Next();
-            
-
-            return (randomNumber);
-
-
-
-        }
-
-        
-       private Weapon RandomWeapon()
-        {
-            int weaponselecter(MeleeWeapon.Types _meleeWeapon, RangedWeapon.Types _rangedWeapon)
-            {
-                switch (_meleeWeapon)
-                {
-                    case MeleeWeapon.Types.Dagger:
-                        return 1;
-                        
-                    case MeleeWeapon.Types.Longsword:
-                        return 2;
-                        
-                   
-                }
-                switch (_rangedWeapon)
-                {
-                    case RangedWeapon.Types.Longbow:
-                        return 3;
-
-                    case RangedWeapon.Types.Rifle:
-                        return 4;
-
-
-                }
-
-
-            }
-        }
-
-
-    }
-
-
-    }
-}
-}
-}
 
 
 
