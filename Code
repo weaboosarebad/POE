@@ -884,6 +884,59 @@
     }
 
 
+    class Leader : Enemy
+    {
+        //question 2.4 
+
+        public override void ReturnMove(Movement movement)
+        {
+            Map obj = new Map();
+            Character character = new Character();
+            Hero hero = new Hero();
+            
+            if (character.Vision[1].Tile_Type == TileType.Area || character.Vision[1].Tile_Type == TileType.Gold || character.Vision[1].Tile_Type == TileType.Weapon)
+            {
+                //if nothing is in the way 
+            }
+                //if something is in the way 
+
+            else
+            {
+                switch (rndObj(4, 1))
+                {
+                    case 1: movement = Movement.Up;
+                            break;
+                    case 2: movement = Movement.Right;
+                        break;
+                    case 3:movement = Movement.Down;
+                        break;
+                    case 4:
+                        movement = Movement.Left;
+                        break;
+                }
+
+
+            }
+        
+        
+        }
+
+
+
+        public Leader(int _xpos, int _ypos, int _enemyDmg, int _startHP, string _symbol)
+        {
+            xPos = _xpos;
+            yPos = _ypos;
+            charSymbol = "L";
+            dmg = 2;
+            maximumHealth = 20;
+
+
+
+     
+        } 
+      
+    }
 
 
 
