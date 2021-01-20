@@ -824,7 +824,64 @@
         
     }
 
+: Item 
+    {
+        private int Damage;
 
+        //Public Accessor 
+        public int pubDam
+        {
+            get { return Damage; }
+            set { Damage = value; }
+        }
+        private int weaponRange;
+        public virtual int Range
+        {
+            get { return weaponRange; } set { weaponRange = value;} 
+        }
+
+        private int Durability;
+
+        //Public Accessor 
+        public int pubDurability
+        {
+            get { return Durability; }
+            set { Durability = value; }
+        }
+        private int Cost;
+
+        //Public Accessor 
+        public int pubCost
+        {
+            get { return Cost; }
+            set { Cost = value; }
+        }
+        private string weaponType;
+
+        //Public Accessor 
+        public string pubWeaponType
+        {
+            get { return weaponType; }
+            set { weaponType = value; }
+        }
+        //Constructor  
+        public Weapon()
+        {
+
+        }
+
+        public Weapon(int xCoordinate, int yCoordinate, TileType _TileType)
+        {
+            y = yCoordinate;
+            x = xCoordinate;
+            Tile_Type = _TileType;
+
+        }
+    
+    
+    
+    
+    }
 
 
 
